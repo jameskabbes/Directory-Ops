@@ -34,15 +34,20 @@ def join_dirs(list_of_items):
 def copy_paste_file(copy_path, paste_path):
     '''copies and pastes a file into a new location'''
 
-    if path_exists(copy_path) and path_exists(paste_path):
+    print (copy_path)
+    print (paste_path)
+
+    if path_exists(copy_path) and not path_exists(paste_path):
         shutil.copyfile(copy_path, paste_path)
+        print ('copying file...')
+
 
 def remove_file(path, override = False):
     '''removes file at given path'''
 
     inp = 'delete'
     if not override:
-        inp = input('Type "delete" to delete ' + str(path))
+        inp = input('Type "delete" to delete ' + str(path) + ': ')
 
     if inp == 'delete':
         if path_exists(path):
@@ -51,5 +56,17 @@ def remove_file(path, override = False):
 def rename_file(og_path, new_path):
     '''renames og to new'''
 
-    if path_exists(og_path) and path_exists(new_path):
+    if path_exists(og_path) and not path_exists(new_path):
         os.rename(og_path, new_path)
+
+def create_dir(path):
+    '''creates a directory at path'''
+
+    os.mkdir(path)
+
+
+
+
+
+if __name__ == '__main__':
+    cd = get_cwd()
