@@ -62,8 +62,8 @@ def rename_file(og_path, new_path):
 def create_dir(path):
     '''creates a directory at path'''
 
-    os.mkdir(path)
-
+    if not path_exists(path):
+        os.mkdir(path)
 
 
 
